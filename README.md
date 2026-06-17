@@ -1,3 +1,11 @@
+## notes
+- week2 day 4 tools
+- week5 day 3 hugging, face/langchain, RAG, VectorDB
+- problem with sharing history(not in correct way)
+    in week5/implementation if asked 1st about Avery then queried about
+    someone else's achievement without mentioning there name then llm is not
+    able to answer(example in week5/day3 seek till 10min)
+
 # LLM Engineering - Master AI and LLMs
 
 ## Your 8 week journey to proficiency starts today

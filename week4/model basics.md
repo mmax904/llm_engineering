@@ -1,0 +1,14 @@
+- Open Source or Closed 
+- Chat/Reasoning/Hybrid
+- Release date and knowledge cut-off
+- Parameters
+- Training tokens (how much data is used to train the model)
+- Context window
+- Inference Cost(invoking/using model cost)
+- Training Cost
+- Build Cost
+- Time to Market (how long will it take to build before something new/new model come out)
+- Rate Limits
+- Speed
+- Latency
+- License
