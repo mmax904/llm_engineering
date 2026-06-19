@@ -12,7 +12,7 @@
 - week2 model to model chat, gradio, tools in day 4, 
 - week3 colab, models, tokenisers, pipelines, minutes of meeting creator, visualizer
 - week4 week4/model basics.md, code conversion and model, keys, implementation
-- week5 notes in day 3, week5/implementation/ingest.py, pydantic & AnswerEval in week5/evaluation/eval.py, day 3 hugging, face/langchain, RAG, issues with history, pro_implementation VectorDB, multiprocessing in ingest.py,  !pip & %pip difference, re-ranking
+- week5 `notes` in `day 3`, week5/implementation/ingest.py, pydantic & AnswerEval in week5/evaluation/eval.py, day 3 hugging, face/langchain, RAG, issues with history, pro_implementation VectorDB, multiprocessing in ingest.py,  !pip & %pip difference, re-ranking
 - problem with sharing history(not in correct way)
     in week5/implementation if asked 1st about Avery then queried about
     someone else's achievement without mentioning there name then llm is not
@@ -40,15 +40,28 @@
 - **Graph RAG :** retrieve content closely related to similar documents. There are special databases called ```graph databases``` like ```Neo4j's``` and many of them that are specially designed to store
 Information as as nodes with edges.
 A way to think about things in terms of relationships between entities.
-And if you store it in a graph database like that, then it's even easier for you to find a chunk that's close to a vector, and then include that and include all the chunks that are the sort of 1 or 2 neighbors away in the graph database.
+And if you store it in a `graph database` like that, then it's even easier for you to find a chunk that's close to a vector, and then include that and include all the chunks that are the sort of 1 or 2 neighbors away in the `graph database`.
 - **Agentic RAG :** use Agent for retrieval, combining with Memory and Tools such as SQL.
 Let the LLM make the decisions. So instead of just doing a vector lookup and putting all that in the context, call an LLM and give it some tools, give it a tool that could do a vector lookup based on a query, maybe give it some more tools, like a SQL tool that can run SQL on a database, or if it's the files that we've got in our knowledge base, just do a string lookup in the files if it wants to give it access to a bunch of tools and then call this like your retrieval agent or something, and then say, here's a user question. It is about doing all the previos things before it, but letting the LM decide which to do and in which order.
 
+## LangGraph
+LangGraph is an open-source framework and extension of LangChain designed specifically for building complex, stateful AI agent applications. While traditional chains process data in a straight line, LangGraph models AI workflows as graphs with "nodes" (individual agents or steps) and "edges" (conditions and paths). This allows for branching, loops, and parallel processing.
 
+## Why Use LangGraph?
+- Cyclical Workflows: Unlike simple pipelines, LangGraph supports loops. This allows your AI to autonomously plan, execute, review its work, and correct mistakes iteratively.
+- State Management: It provides built-in, persistent memory across the entire workflow, meaning your AI remembers context, previous tool usage, and states across different steps.
+- Multi-Agent Systems: It is highly effective for coordinating "teams" of AI agents where each node has a specialized role (e.g., one agent searches the web, another analyzes data, and a third writes the report).
+- Human-in-the-Loop: LangGraph allows you to pause the AI's execution, request a human to review or approve an action (like executing an API call), and then resume the graph.
 
-# Notes on `answer.py` — LiteLLM Routing & Custom URLs
+## Core Components
+- Nodes: The individual units of work (e.g., calling an LLM, querying a database, or running a Python script).
+- Edges: The logic that determines which node runs next (including conditional paths, such as routing to "Step A" if a tool fails, or "Step B" if it succeeds).
+- State: A shared dictionary that stores the conversation context and data as it passes through the graph.
 
----
+## When to Use LangGraph vs. LangChain
+While standard LangChain is great for linear pipelines like simple question-answering or Retrieval-Augmented Generation (RAG), LangGraph is built for advanced agentic architectures that require reasoning, complex decision-making, and self-correction
+
+# Notes week5/day3.ipynb on LiteLLM Routing & Custom URLs
 
 ## Is `completion` using a local model or Groq via API key?
 
